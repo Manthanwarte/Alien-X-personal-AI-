@@ -9,9 +9,10 @@ def say(text):
 def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        r.pause_threshold = 1
+        # r.pause_threshold = 0.6
         audio = r.listen(source)
         try:
+            print("Recognizing...")
             query = r.recognize_google(audio, language="en-in")
             print(f"User said: {query}")
             return query
