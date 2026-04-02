@@ -9,7 +9,7 @@ def say(text):
 def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        # r.pause_threshold = 0.6
+        r.pause_threshold = 0.6
         audio = r.listen(source)
         try:
             print("Recognizing...")
@@ -29,10 +29,18 @@ if __name__ == "__main__":
                 ["wikipedia", "https://www.wikipedia.com"],
                 ["google", "https://www.google.com"],
                 ["github", "https://github.com/Manthanwarte"],
-                ["instagram", "https://www.instagram.com/enoughmanthan/"]]
+                ["instagram", "https://www.instagram.com/enoughmanthan/"],
+                ["linkedin", "https://www.linkedin.com/in/manthan-warte-696378311/"]]
         for site in sites:
-            if f"Open {site[0]}".lower() in query.lower():
+            if f"Open {site[0]}" in query:
                 say(f"Opening {site[0]} sir...")
-                webbrowser.open(site [1])
+                webbrowser.open(site[1])
+
+        if "open music" in query:
+            musicpath = "/Users/manthanwarte/Downloads/Aarzu - DjBaap.mp3"
+            os.system(f"open '{musicpath}'")
             # say(query)
-    
+
+        if "open FaceTime" in query:
+            os.system(f"open /System/Applications/FaceTime.app")
+
